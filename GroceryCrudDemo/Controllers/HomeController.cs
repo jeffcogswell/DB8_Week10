@@ -24,6 +24,7 @@ namespace GroceryCrudDemo.Controllers
 
 		public IActionResult Privacy()
 		{
+
 			return View();
 		}
 
@@ -32,5 +33,6 @@ namespace GroceryCrudDemo.Controllers
 		{
 			return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
 		}
+
 	}
 }

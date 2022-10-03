@@ -1,0 +1,15 @@
+﻿@model Category;
+@{
+    ViewData["Title"] = "EditForm";
+}
+
+<h1>Edit Category</h1>
+
+<form method="post" action="/category/savechanges">
+    <input type="hidden" name="id" value="@Model.id" />
+    ID: @Model.id<br />
+    Name: <input type="text" name="name" value="@Model.name" /><br />
+    Description: <input type="text" name="description" value="@Model.description" /><br />
+    Location: <input type="text" name="location" value="@Model.location" /><br />
+    <input type="submit" value="Save" />
+</form>

@@ -56,14 +56,39 @@ namespace GroceryCrudDemo.Models
 		// CRUD operations for our Product table
 
 		// Read all
+		public static List<Product> GetAllProducts()
+		{
+			return DB.GetAll<Product>().ToList();
+		}
 
 		// Read one
+		public static Product GetOneProduct(int id)
+		{
+			return DB.Get<Product>(id);
+		}
 
 		// Create one (insert)
+		public static Product InsertProduct(Product prod)
+		{
+			// The insert function takes an instance of Product,
+			// so the insert function knows what class and therefore
+			// what table to use.
+			DB.Insert(prod);
+			return prod;
+		}
 
 		// Delete one
+		public static void DeleteProduct(int id)
+		{
+			Product prod= new Product();
+			prod.id = id;
+			DB.Delete(prod);
+		}
 
 		// Update one (Users prefer the term "edit")
-		
+		public static void UpdateProduct(Product prod)
+		{
+			DB.Update(prod);
+		}
 	}
 }
