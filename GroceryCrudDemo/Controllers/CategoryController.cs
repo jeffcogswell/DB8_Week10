@@ -41,8 +41,9 @@ namespace GroceryCrudDemo.Controllers
 
 		public IActionResult ConfirmDelete(string id)
 		{
-			ViewData["categoryid"] = id;
-			return View();
+			Category cat = DAL.GetOneCategory(id);
+			//ViewData["categoryid"] = id; Don't need this line anymore since we're using a model
+			return View(cat);
 		}
 
 		public IActionResult Delete(string id)

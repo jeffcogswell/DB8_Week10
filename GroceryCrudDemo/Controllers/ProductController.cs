@@ -33,9 +33,45 @@ namespace GroceryCrudDemo.Controllers
 
         public IActionResult Add(Product prod)
         {
-            DAL.InsertProduct(prod);
-            return Redirect("/product");
-        }
+            // Validation: If a field is blank, set a message for it
+            // and send them back to the form
+            // Always validate on *both* sides --
+            //     (1) The browser (client) side
+            //     (2) The server side
+
+            bool isValid = true;
+            if (prod.name == null)
+            {
+                ViewBag.NameMessage = "Name is required.";
+                isValid = false;
+            }
+            if (prod.description == null)
+            {
+                ViewBag.DescMessage = "Description is required";
+                isValid = false;
+            }
+            if (prod.price <= 0)
+            {
+                ViewBag.PriceMessage = "Price must be greater than 0";
+                isValid = false;
+            }
+
+            if (isValid)
+            {
+                DAL.InsertProduct(prod);
+                return Redirect("/product");
+            }
+            else
+            {
+                List<Category> cats = DAL.GetAllCategories();
+                ViewBag.Name = prod.name;
+                ViewBag.Description = prod.description;
+                ViewBag.Price = prod.price;
+                ViewBag.Inventory = prod.inventory;
+                return View("AddForm", cats);
+            }
+
+		}
 
         // Delete a product
         // This one won't return a view. Instead it will redirect

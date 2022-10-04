@@ -6,10 +6,10 @@
 <h1>AddForm</h1>
 
 <form method="post" action="/product/add">
-    Name: <input type="text" name="name" /><br />
-    Description: <input type="text" name="description" /><br />
-    Price: <input type="text" name="price" /><br />
-    Inventory: <input type="number" name="inventory" /><br />
+    Name: <input type="text" name="name" value="@ViewBag.Name"/> <span style="font-weight:bold;color:red">@ViewBag.NameMessage</span><br />
+    Description: <input type="text" name="description" value="@ViewBag.Description"/> <span style="font-weight:bold;color:red">@ViewBag.DescMessage</span><br />
+    Price: <input type="text" name="price" value="@ViewBag.Price"/> <span style="font-weight:bold;color:red">@ViewBag.PriceMessage</span><br />
+    Inventory: <input type="number" name="inventory" value="@ViewBag.Inventory" /><br />
     Category: 
     
         <select name="category">

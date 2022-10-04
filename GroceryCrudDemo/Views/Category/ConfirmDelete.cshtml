@@ -1,11 +1,11 @@
-﻿
+﻿@model Category
 @{
     ViewData["Title"] = "ConfirmDelete";
 }
 
 <h1>Are you sure you want to delete this?</h1>
 
-Delete category @ViewData["categoryid"]?
+Delete category @Model.name?
 
-<div><a href="/category/delete/@ViewData["categoryid"]">Yes, delete</a> (Warning! This will delete all products in this category!)</div>
+<div><a href="/category/delete/@Model.id">Yes, delete</a> (Warning! This will delete all products in this category!)</div>
 <div><a href="/category">No, cancel</a></div>

@@ -1,0 +1,34 @@
+﻿@model List<Employee>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Employees</h1>
+
+<a href="/employee/addform">Add Employee</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Department</th>
+            <th>Hiredate</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(Employee emp in Model)
+        {
+            <tr>
+                <td>@emp.firstname</td>
+                <td>@emp.lastname</td>
+                <td>@emp.phone</td>
+                <td>@emp.email</td>
+                <td>@emp.department</td>
+                <td>@emp.hiredate.ToString("yyyy-MM-dd")</td>
+            </tr>
+        }
+    </tbody>
+</table><br />
