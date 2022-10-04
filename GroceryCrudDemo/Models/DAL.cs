@@ -48,6 +48,9 @@ namespace GroceryCrudDemo.Models
 			//   }
 			// Dapper will then find #catid and replace it with 'FRUIT'
 			// to build the SQL string.
+			// example:
+			//    delete from product where category=@catid
+			//    delete from product where category='FRUIT'
 			DB.Execute("delete from product where category=@catid", new {catid=id});
 
 			Category cat = new Category();
