@@ -11,6 +11,20 @@
     Description: <input type="text" name="description" value="@Model.description" /><br />
     Price: <input type="text" name="price" value="@Model.price" /><br />
     Inventory: <input type="number" name="inventory" value="@Model.inventory" /><br />
-    Category: <input type="text" name="category" value="@Model.category" /><br />
+    Category: 
+    
+        <select name="category">
+            @foreach (Category cat in (List<Category>)ViewData["categories"]) {
+                <option selected="@(cat.id == Model.category ? "selected" : null)" value="@cat.id">@cat.name</option>
+
+                /*if (cat.id == Model.category) {
+                    <option selected="selected" value="@cat.id">@cat.name</option>
+                }
+                else {
+                    <option value="@cat.id">@cat.name</option>
+                }*/
+            }
+        </select>
+
     <input type="submit" value="Save" />
 </form>

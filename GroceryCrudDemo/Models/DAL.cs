@@ -39,6 +39,17 @@ namespace GroceryCrudDemo.Models
 		// Delete one
 		public static void DeleteCategory(string id)
 		{
+			// Delete all products in this category. (Make sure user understands this!!)
+			// Use Dapper's tool to prevent SQL injection attacks
+			// Example: id is FRUIT
+			// We're building an anonymous object that looks like this:
+			//   {
+			//       catid = "FRUIT"
+			//   }
+			// Dapper will then find #catid and replace it with 'FRUIT'
+			// to build the SQL string.
+			DB.Execute("delete from product where category=@catid", new {catid=id});
+
 			Category cat = new Category();
 			cat.id = id;
 			// or

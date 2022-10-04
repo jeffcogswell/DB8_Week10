@@ -27,7 +27,8 @@ namespace GroceryCrudDemo.Controllers
 
         public IActionResult AddForm()
         {
-            return View();
+            List<Category> cats = DAL.GetAllCategories();
+            return View(cats);
         }
 
         public IActionResult Add(Product prod)
@@ -50,6 +51,7 @@ namespace GroceryCrudDemo.Controllers
         //   2. A route that does the update and redirects to index
         public IActionResult EditForm(int id)
         {
+            ViewData["categories"] = DAL.GetAllCategories();
             return View(DAL.GetOneProduct(id));
         }
 
