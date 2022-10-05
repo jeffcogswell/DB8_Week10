@@ -1,3 +1,6 @@
+using BusinessV2Demo.Models;
+using MySql.Data.MySqlClient; // ADD THIS!!
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -23,5 +26,9 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+// Add the using statement up above for MySQL!
+string connstring = app.Configuration.GetConnectionString("db");
+DAL.DB = new MySqlConnection(connstring);
 
 app.Run();

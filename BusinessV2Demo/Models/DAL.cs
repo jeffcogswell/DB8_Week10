@@ -6,7 +6,7 @@ namespace BusinessV2Demo.Models
 {
     public class DAL
     {
-		public static MySqlConnection DB = new MySqlConnection("Server=127.0.0.1;Database=businessv2;Uid=root;Pwd=abc123;");
+		public static MySqlConnection DB;
 		public static List<Employee> GetAllEmployees()
 		{
 			return DB.GetAll<Employee>().ToList();

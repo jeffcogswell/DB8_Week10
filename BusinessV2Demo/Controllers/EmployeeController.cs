@@ -18,6 +18,18 @@ namespace BusinessV2Demo.Controllers
 
         public IActionResult Add(Employee emp)
         {
+            bool isValid = true;
+            if (emp.hiredate < new DateTime(2020, 1, 1) || emp.hiredate > DateTime.Now)
+            {
+                ViewBag.HireDateMessage = "Please choose a date between Jan 1, 2020 and today.";
+                isValid = false;
+            }
+
+            if (isValid == false)
+            {
+                return View("AddForm");
+            }
+
             DAL.AddEmployee(emp);
             return Redirect("/employee");
         }
